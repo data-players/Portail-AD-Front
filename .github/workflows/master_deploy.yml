@@ -27,7 +27,7 @@ jobs:
         working-directory: ./frontend
 
       - name: Deploy
-        run: npm run deploy
+        run: npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
         working-directory: ./frontend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
