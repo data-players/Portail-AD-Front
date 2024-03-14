@@ -9,11 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Utilisez la version de Node.js qui correspond à votre projet
-      - run: npm install
-      - run: npm run build
-      - run: npm run deploy
+          node-version: '20'  # Adaptez à la version de Node.js de votre projet
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: ./frontend
+
+      - name: Deploy
+        run: npm run deploy
+        working-directory: ./frontend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
