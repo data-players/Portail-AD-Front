@@ -11,14 +11,14 @@ import "instantsearch.css/themes/algolia-min.css";
 
 
 const searchClient = instantMeiliSearch(
-  'https://ms-adf78ae33284-106.lon.meilisearch.io',
-  'a63da4928426f12639e19d62886f621130f3fa9ff3c7534c5d179f0f51c4f303'
+  'https://meilisearch.data-players.com/',
+  'D4t4-Pl4yers'
 );
 
 const App = () => (
   <div className="ais-InstantSearch">
     <h1>Demo</h1>
-    <InstantSearch indexName="steam-video-games" searchClient={searchClient}>
+    <InstantSearch indexName="documents" searchClient={searchClient}>
       <Stats />
       <SearchBox />
       <InfiniteHits hitComponent={Hit} />
