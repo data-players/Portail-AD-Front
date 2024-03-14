@@ -14,7 +14,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'  # Adaptez à la version de Node.js de votre projet
-
+      - name: Config Git
+        run: |
+          git config --global user.email "tech@data-players.com"
+          git config --global user.name "Data Players"
       - name: Install dependencies
         run: npm install
         working-directory: ./frontend
