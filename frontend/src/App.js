@@ -17,7 +17,7 @@ const searchClient = instantMeiliSearch(
 
 const App = () => (
   <div className="ais-InstantSearch">
-    <h1>Demo</h1>
+    <h1>Demo Portail Alimentation Durable</h1>
     <InstantSearch indexName="documents" searchClient={searchClient}>
       <Stats />
       <SearchBox />
