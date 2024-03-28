@@ -21,25 +21,44 @@ const App = () => (
     <InstantSearch indexName="documents" searchClient={searchClient}>
       <Stats />
       <SearchBox />
-      <InfiniteHits hitComponent={Hit} />
+      <InfiniteHits
+          hitComponent={Hit} 
+          classNames={{
+            item: 'itemCustom'
+          }}
+      />
     </InstantSearch>
   </div>
 );
 
-const Hit = ({ hit }) => (
+const Hit = ({ hit }) => {
+  // console.log(hit)
+  return (
   <div key={hit.id}>
-    <div className="hit-name">
-      <Highlight attribute="name" hit={hit} />
-    </div>
-    <p className="hit-categories"><Highlight attribute="categories" hit={hit} /></p>
-    <div className="hit-image">
+    <h1 className="hit-name">
+      <Highlight attribute="title" hit={hit} />
+    </h1  >
+    {/* <ul>
+    {hit.hasKeyword?.map((kw,index) =>{
+       let clone = {
+        ...hit,
+        hasKeyword:[hit.hasKeyword[index]]
+       }
+       console.log(clone)
+       return (<li><Highlight attribute="hasKeyword" hit={clone}/></li>)
+      }
+    )}
+    </ul> */}
+    <p className="hit-categories"><Highlight attribute="hasKeyword" hit={hit}  separator=" - "/></p>
+    {/* <div className="hit-image">
       <img src={hit.picture} alt={hit.name} width="200px" />
       <p className="image-credit">Picture by <a href={hit.picture_author_profile_link}>{hit.picture_author}</a> on <a href="https://unsplash.com/?utm_source=restaurants_demo&utm_medium=referral">Unsplash</a></p>
-    </div>
+    </div> */}
     <div className="hit-description">
       <Highlight attribute="description" hit={hit} />
     </div>
   </div>
-);
+)
+};
 
 export default App

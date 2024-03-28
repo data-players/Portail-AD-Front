@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.hit-categories {
+  font-style: italic;
+}
+
+.ais-InfiniteHits-item {
+  width:100% !important;
+}
