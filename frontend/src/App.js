@@ -16,44 +16,31 @@ const searchClient = instantMeiliSearch(
 );
 
 const App = () => (
-  <div className="ais-InstantSearch">
-    <h1>Demo Portail Alimentation Durable</h1>
-    <InstantSearch indexName="documents" searchClient={searchClient}>
-      <Stats />
-      <SearchBox />
-      <InfiniteHits
-          hitComponent={Hit} 
-          classNames={{
-            item: 'itemCustom'
-          }}
-      />
-    </InstantSearch>
+  <div className="mainContainer" >
+    <div className="ais-InstantSearch">
+      <h1>Demo Portail Alimentation Durable</h1>
+      <InstantSearch indexName="documents" searchClient={searchClient}>
+        <Stats />
+        <SearchBox className="searchBox"/>
+        <InfiniteHits
+            hitComponent={Hit} 
+            classNames={{
+              item: 'itemCustom'
+            }}
+        />
+      </InstantSearch>
+    </div>
   </div>
 );
 
 const Hit = ({ hit }) => {
-  // console.log(hit)
   return (
   <div key={hit.id}>
-    <h1 className="hit-name">
+    <a href={hit.homePage}><h1 className="hit-name">
       <Highlight attribute="title" hit={hit} />
-    </h1  >
-    {/* <ul>
-    {hit.hasKeyword?.map((kw,index) =>{
-       let clone = {
-        ...hit,
-        hasKeyword:[hit.hasKeyword[index]]
-       }
-       console.log(clone)
-       return (<li><Highlight attribute="hasKeyword" hit={clone}/></li>)
-      }
-    )}
-    </ul> */}
+    </h1></a>
     <p className="hit-categories"><Highlight attribute="hasKeyword" hit={hit}  separator=" - "/></p>
-    {/* <div className="hit-image">
-      <img src={hit.picture} alt={hit.name} width="200px" />
-      <p className="image-credit">Picture by <a href={hit.picture_author_profile_link}>{hit.picture_author}</a> on <a href="https://unsplash.com/?utm_source=restaurants_demo&utm_medium=referral">Unsplash</a></p>
-    </div> */}
+    <p className="hit-categories"><Highlight attribute="hasDataSource" hit={hit}  separator=" - "/></p>
     <div className="hit-description">
       <Highlight attribute="description" hit={hit} />
     </div>

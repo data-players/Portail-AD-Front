@@ -20,3 +20,11 @@ code {
 .ais-InfiniteHits-item {
   width:100% !important;
 }
+
+.mainContainer {
+  padding : 20px;
+}
+
+.searchBox {
+  margin-bottom: 20px;
+}
